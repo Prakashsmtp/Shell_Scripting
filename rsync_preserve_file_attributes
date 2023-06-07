@@ -1,0 +1,13 @@
+rsync -avz /source/directory /destination/directory
+
+or 
+
+rsync -avz /local/directory username@remote-server:/remote/directory
+
+
+In this command:
+
+-a stands for "archive mode", which preserves file attributes like ownership, permissions, timestamps, etc.
+-v stands for "verbose", which provides detailed information about the operations being performed.
+-z stands for "compress", which compresses data during the transfer 
+

@@ -1,0 +1,18 @@
+To remove files with the extensions .trc and .trm in /u01 directory automatically 
+
+find /u01 -type f \( -name "*.trc" -o -name "*.trm" \) -exec rm -f {} \;
+
+Or 
+
+sudo find /u01 -type f \( -name "*.trc" -o -name "*.trm" \) -exec rm -f {} \;
+
+In this command:
+
+find /u01 will start searching from the /u01 directory.
+-type f will only match files (not directories).
+-name "*.trc" -o -name "*.trm" will match file names ending in .trc or .trm.
+-exec rm -f {} \; will delete each matched file without asking for confirmation.
+Important: Be very careful with this command as it will delete files without asking for confirmation. Always ensure you have a backup of your files before running such commands.
+
+Lastly, remember that you would usually need to have proper permissions to delete files in /u01. If you're not the owner of the files, you might need to run the command with sudo:
+

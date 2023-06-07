@@ -4,6 +4,13 @@ or
 
 rsync -avz /local/directory username@remote-server:/remote/directory
 
+To Avoid Compression and want know anout the Progress of the file movement
+
+rsync -avP /local/directory /destination/directory
+
+or 
+
+rsync -avP /local/directory username@remote-server:/remote/directory
 
 In this command:
 

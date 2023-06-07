@@ -1,0 +1,2 @@
+find /path/to/directory -type f -name "*.trc" -exec rm -f {} \;
+

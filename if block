@@ -1,0 +1,20 @@
+db_domain = "example.com"  # Replace with your actual db_domain value
+
+# Assuming you have an input file named 'input.txt' with values on each line
+with open('input.txt', 'r') as file:
+    for line in file:
+        value = line.strip()  # Remove any leading/trailing whitespaces
+        
+        if value == db_domain:
+            # Execute SQL statements if value matches db_domain
+            # ...
+            # Your code here
+            
+            print("SQL statements executed successfully.")
+        else:
+            print("Unauthorized domain.")
+            break  # Exit the loop if domain is unauthorized
+
+# Execution will continue here after the loop completes or if 'break' is not triggered
+# ...
+# Your code here

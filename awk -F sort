@@ -1,0 +1,17 @@
+awk -F'.' '{print $2"."$3"."$4, $0}' filename | sort -k1,1 | cut -d' ' -f2-
+
+The provided hostnames seem to be in the format `subdomain.domain.tld.net`. If we need to sort these based on the domain name, we should consider both the `domain.tld` parts together for sorting. Here's a way to do it:
+
+```bash
+awk -F'.' '{print $2"."$3"."$4, $0}' filename | sort -k1,1 | cut -d' ' -f2-
+```
+
+This command first prints the `domain.tld.net` part (which is in the 2nd, 3rd, and 4th fields considering `.` as the separator), followed by the entire line. It then sorts the output based on this `domain.tld.net` part, and finally removes the `domain.tld.net` part from the beginning of each line.
+
+In your specific case, you'd replace `filename` with the name of your file. If you want to store the result back to a file, you can redirect the output:
+
+```bash
+awk -F'.' '{print $2"."$3"."$4, $0}' filename | sort -k1,1 | cut -d' ' -f2- > sorted_filename
+```
+
+This will create a new file named `sorted_filename` with the sorted content. If you want to overwrite the original file, you can then use the `mv` command to rename `sorted_filename` to your original filename.

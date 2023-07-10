@@ -1,0 +1,9 @@
+if [ -z "$1" ]
+then
+    echo "No argument supplied, going to next block..."
+    # Put the code for the next block here
+else
+    input_variable=$1 
+    echo "The input variable is: $input_variable"
+    # You can continue your script here
+fi

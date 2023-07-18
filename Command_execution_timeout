@@ -1,0 +1,24 @@
+#!/bin/bash
+
+# List of commands to run
+commands=("command1"
+          "command2"
+          "command3"
+          # Add more commands as needed
+)
+
+# Loop through the commands
+for cmd in "${commands[@]}"; do
+  echo "Running command: $cmd"
+  
+  # Run the command with a 30 second timeout
+  timeout 30 $cmd
+
+  # If the timeout command exited with status 124, then it timed out
+  if [ $? -eq 124 ]; then
+    echo "Command timed out: $cmd"
+  fi
+
+  # Sleep for 30 seconds before running the next command
+  sleep 30
+done

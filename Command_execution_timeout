@@ -1,5 +1,8 @@
 #!/bin/bash
 
+# Define the logfile
+logfile="/path/to/your/logfile.log"
+
 # List of commands to run
 commands=("command1"
           "command2"
@@ -16,7 +19,7 @@ for cmd in "${commands[@]}"; do
 
   # If the timeout command exited with status 124, then it timed out
   if [ $? -eq 124 ]; then
-    echo "Command timed out: $cmd"
+    echo "Command timed out: $cmd" | tee -a $logfile
   fi
 
   # Sleep for 30 seconds before running the next command

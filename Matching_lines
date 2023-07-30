@@ -1,0 +1,42 @@
+# This Version Adds the line to the file and prints it on console and removes from source file
+#!/bin/bash
+
+# Empty the file before starting the process
+> matching_lines.txt
+
+while IFS= read -r line; do
+  if [[ -n $line ]]; then
+    # Save the matching lines to a file
+    grep "${line}" list1.txt >> matching_lines.txt
+    # Print the matching lines to the console
+    echo "$(grep "${line}" list1.txt)"
+    # Remove the matching lines from the original file
+    sed -i "/${line}/d" list1.txt
+  fi
+done < list2.txt
+
+
+# This Version Adds the line to the file and it doesnot print on console and removes from source file
+#!/bin/bash
+# Empty the file before starting the process
+> matching_lines.txt
+
+while IFS= read -r line; do
+  if [[ -n $line ]]; then
+    # Save the matching lines to a file and a variable
+    matching_lines=$(grep "${line}" list1.txt)
+    echo "$matching_lines" >> matching_lines.txt
+    # Print the matching lines to the console
+    echo "$matching_lines"
+    # Remove the matching lines from the original file
+    sed -i "/${line}/d" list1.txt
+  fi
+done < list2.txt
+
+#This just compares and removes from the sourcefile.
+while IFS= read -r line; do
+  if [[ -n $line ]]; then
+    sed -i "/${line}/d" list1.txt
+  fi
+done < list2.txt
+

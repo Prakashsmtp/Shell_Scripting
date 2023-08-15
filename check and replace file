@@ -1,0 +1,18 @@
+#!/bin/bash
+
+# File to check
+FILE_NAME=".db_oracle_env"
+
+# New file to replace with
+NEW_FILE="/path/to/new_file.txt"
+
+# Check if the file exists in the current directory
+if [[ ! -f "./$FILE_NAME" ]]; then
+    echo "$FILE_NAME does not exist. Replacing with $NEW_FILE..."
+    cp "$NEW_FILE" "./$FILE_NAME"
+else
+    echo "$FILE_NAME exists. Proceeding with the script..."
+
+    # The rest of your script goes here
+    # ...
+fi

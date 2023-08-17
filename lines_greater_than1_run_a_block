@@ -1,0 +1,23 @@
+#!/bin/bash
+
+# File to check
+FILE_TO_CHECK="/path/to/your/file.txt"
+
+# Linux user to lock and expire
+LINUX_USER="target_linux_user"
+
+# Check the line count
+LINES=$(wc -l < "$FILE_TO_CHECK")
+
+if (( LINES > 1 )); then
+    echo "More than one line detected. Locking Linux user..."
+
+    # Lock the Linux user
+    passwd -l "$LINUX_USER"
+
+    # Set the Linux user's password to expire
+    chage -d 0 "$LINUX_USER"
+
+else
+    echo "Condition not met. Not locking Linux user."
+fi

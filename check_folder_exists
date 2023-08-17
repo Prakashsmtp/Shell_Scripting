@@ -1,6 +1,14 @@
 DIRECTORY="/path/to/your/directory"
 USER_ACCOUNT="username_to_check"
 
+#!/bin/bash
+
+# Store the output of the command in the variable named 'pmon_count'
+pmon_count=$(ps -ef | grep pmon | grep -v grep | wc -l)
+
+echo "Number of pmon processes: $pmon_count"
+
+
 # Check if the directory exists
 if [ ! -d "$DIRECTORY" ]; then
     echo "Directory $DIRECTORY does not exist."

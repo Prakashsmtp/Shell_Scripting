@@ -1,0 +1,17 @@
+DIRECTORY="/path/to/your/directory"
+USER_ACCOUNT="username_to_check"
+
+# Check if the directory exists
+if [ ! -d "$DIRECTORY" ]; then
+    echo "Directory $DIRECTORY does not exist."
+
+    # Lock the user account
+    passwd -l $USER_ACCOUNT
+    
+    # Expire the user account
+    chage -E 0 $USER_ACCOUNT
+
+    echo "Locked and expired user account $USER_ACCOUNT."
+else
+    echo "Directory $DIRECTORY exists. Doing nothing."
+fi

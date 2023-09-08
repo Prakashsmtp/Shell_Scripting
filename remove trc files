@@ -1,0 +1,13 @@
+#!/bin/bash
+
+# Set the directory to scan
+directory_to_scan="/u01"
+
+# Set the maximum age of files (in days)
+max_age=20
+
+# Set the Oracle user
+oracle_user="oracle"
+
+# Use the find command to locate files and directories
+find "$directory_to_scan" -type f \( -name "*.trc" -o -name "*.trm" \) -user "$oracle_user" -mtime +$max_age -exec rm {} \;
